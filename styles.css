@@ -1,0 +1,395 @@
+/* Variables
+  ============================= */
+
+  :root {
+    --color-white: #ffffff;
+    --color-grey: #a0a0a0;
+  
+    /** NAVBAR **/
+    --nav-item-font-family: var(--font-family-headings);
+    --nav-item-font-weight: var(--font-weight-bold);
+    --nav-item-font-size: var(--font-size-medium);
+    --nav-item-letter-spacing: .04rem;
+    --nav-item-display: inline-block;
+    --nav-item-margin: 0 0 0 2rem;
+    --nav-item-link-hover: #C271FF;
+    
+    /** MOTION **/
+    --transition-duration: .3s;
+    --transition-cubic-bezier: cubic-bezier(0.17, 0.67, 0, 1.01);
+  }
+
+@font-face {
+    font-family: 'holberton_school-icon';
+    src: url('fonts/holberton_school-icon.eot?sq4eq4');
+    src: url('fonts/holberton_school-icon.eot?sq4eq4#iefix') format('embedded-opentype'),
+        url('fonts/holberton_school-icon.ttf?sq4eq4') format('truetype'),
+        url('fonts/holberton_school-icon.woff?sq4eq4') format('woff'),
+        url('fonts/holberton_school-icon.svg?sq4eq4#holberton_school-icon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+[class^="holberton_school-icon-"],
+[class*=" holberton_school-icon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'holberton_school-icon' !important;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.loader {
+  border: 10px solid #f3f3f3;
+  border-top: 10px solid #C271FF;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  animation: spin 2s linear infinite;
+  margin: auto;
+}
+
+.loader-color {
+  border: 10px solid #C271FF;
+  border-top: 10px solid #f3f3f3;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  animation: spin 2s linear infinite;
+  margin: auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.hero-section {
+    background-color: #071629;
+    background-image: url(./images/pic_1.jpg);
+    background-repeat: no-repeat;
+    background-position: top;
+    min-height: 800px;
+}
+
+.composed-logo {
+    width: 13.5rem;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+}
+
+.nav {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-align: center;
+    display: flex;
+}
+
+.nav .nav-item {
+  font-family: var(--nav-item-font-family);
+  font-weight: var(--nav-item-font-weight);
+  font-size: var(--nav-item-font-size);
+  letter-spacing: var(--nav-item-letter-spacing);
+}
+
+.nav .nav-item + .nav-item {
+  margin: var(--nav-item-margin);
+}
+
+.nav .nav-link {
+  display: block;
+  padding: 0.5rem 0;
+  position: relative;
+}
+
+.nav .nav-link:hover {
+  color: var(--nav-item-link-hover) !important;
+  text-decoration: none !important;
+}
+
+.nav .nav-link::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: var(--color-white);
+  width: 0;
+  height: 0.2rem;
+  transition: var(--transition-duration) var(--transition-cubic-bezier);
+}
+
+/* Header and Hero
+      ============================= */
+  
+.header {
+  padding: var(--header-padding);
+  position: relative;
+  z-index: 3;
+  background: transparent;
+  width: 85%;
+  margin: 0 auto;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.nav-link {
+  font-size: medium;
+}
+
+.navbar-menu {
+  margin-left: 1rem;
+}
+
+.header .menu-btn {
+  display: none;
+}
+
+.menu-btn:checked ~ .navbar-menu {
+  display: block;
+}
+
+.menu-btn:checked ~ .navbar-menu .nav {
+  max-height: 100%;
+  overflow: inherit;
+}
+
+@media only screen and (max-width: 700px) {
+  :root {
+      --nav-item-margin: 0;
+  }
+
+  .navbar-menu {
+      flex: 1;
+      display: none;
+  }
+
+  .header .nav {
+      flex-direction: column;
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height .2s ease-out;
+  }
+
+  .header .menu-icon {
+      cursor: pointer;
+      position: absolute;
+      left: 0;
+      top: 75px;
+      user-select: none;
+      width: 75px;
+      height: 25px;
+    }
+  
+    .header .menu-icon .navicon {
+      background: var(--color-white);
+      display: block;
+      width: 2rem;
+      height: .2rem;
+      position: relative;
+      transition: background .2s ease-out;
+    }
+  
+    .header .menu-icon .navicon::after, .header .menu-icon .navicon::before {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      background: var(--color-white);
+      transition: all .2s ease-out;
+    }
+  
+    .header .menu-icon .navicon::after {
+      top: -.7rem;
+    }
+  
+    .header .menu-icon .navicon::before {
+      top: .7rem;
+    }
+  
+    .composed-logo {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .composed-logo > * {
+      margin: 5px;
+    }
+
+    .navbar-menu {
+      max-width: 25rem;
+      margin: 0 auto;
+    }
+
+    .header {
+      padding: 1rem;
+    }
+
+    .display-1 {
+      font-size: 40px !important;
+    }
+
+    .w-50 {
+      width: 100% !important;
+    }
+
+    h5 {
+      font-size: small;
+    }
+}
+
+.btn-primary {
+  background-color: #C271FF !important;
+  border-color: #C271FF !important;
+}
+
+.btn-primary:hover {
+  border-color: #6d418f !important;
+  opacity: 0.9 !important;
+}
+
+strong {
+  color: #C271FF;
+}
+
+/* Carousel
+============================= */
+
+#experience-carousel {
+  background-color: #C271FF;
+  min-height: 400px;
+}
+
+#tutorial-carousel {
+  min-height: 400px;
+}
+
+#latest-carousel {
+  min-height: 400px;
+}
+
+.card-text {
+  color: grey !important;
+}
+
+.play-btn {
+  position: absolute;
+  top: 10%;
+  left: 35%;
+}
+
+/* Smiles section
+============================= */
+
+.smiles-section, .footer {
+  background-color: #071629;
+}
+
+.social-item svg {
+  fill: var(--color-white);
+}
+
+.footer-paragraph {
+  color: var(--color-grey);
+}
+
+/* Pricing hero
+============================== */
+
+.pricing-hero-section {
+  background-color: #071629;
+  background-image: url(./images/pic_2.jpg);
+  background-repeat: no-repeat;
+  background-position: top;
+  min-height: 800px;
+}
+
+.composed-logo-paragraph {
+  display: flex;
+  margin: auto 1rem;
+}
+
+.text-grey {
+  color: var(--color-grey);
+}
+
+.holberton_school-icon-check {
+  color: green;
+}
+
+.holberton_school-icon-check:before {
+  content: "\e905";
+}
+
+/* Courses hero
+================================== */
+
+.courses-hero-section {
+  background-color: #071629;
+  background-image: url(./images/pic_3.jpg);
+  background-repeat: no-repeat;
+  background-position: top;
+}
+
+.quote {
+  font-family: 'Coiny';
+}
+
+/* Search form
+===================================== */
+
+.search-form {
+  background-color: #C271FF;
+}
+
+.form-control {
+  opacity: 0.4;
+}
+
+.form-keywords::placeholder {
+  color: black;
+}
+
+.holberton_school-icon-search:before {
+  content: "\e912";
+}
+
+@media (min-width: 992px) {
+  #tutorial-carousel .carousel-inner .carousel-item,  #latest-carousel .carousel-inner .carousel-item {
+    margin-right: 0;
+    flex: 0 0 25%;
+    display: block;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 991px) {
+  #tutorial-carousel .carousel-inner .carousel-item, #latest-carousel .carousel-inner .carousel-item {
+    margin-right: 0;
+    flex: 0 0 50%;
+    display: block;
+  }
+}
+
+.test1 {
+  border: 3px black solid !important;
+}
+
+.test2 {
+  border: 3px yellow solid !important;
+}
